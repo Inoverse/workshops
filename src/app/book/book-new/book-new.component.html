@@ -1,0 +1,27 @@
+<form [formGroup]="formGroup" (ngSubmit)="save(formGroup.value)">
+  <div>
+    <input formControlName="title" type="text" />
+  </div>
+  <div>
+    <input formControlName="subtitle" type="text" />
+  </div>
+  <div>
+    <input formControlName="author" type="text" />
+  </div>
+  <div>
+    <input formControlName="isbn" type="text" />
+  </div>
+  <button type="submit" [disabled]="!formGroup.valid">Save</button>
+  <div [hidden]="!formGroup.hasError('required', ['title'])">
+    Title is required.
+  </div>
+  <div [hidden]="!formGroup.hasError('required', ['author'])">
+    Author is required.
+  </div>
+  <div [hidden]="!formGroup.hasError('required', ['isbn'])">
+    ISBN is required.
+  </div>
+  <div [hidden]="!formGroup.hasError('minlength', ['isbn'])">
+    ISBN should be at least 8 chars long.
+  </div>
+</form>
